@@ -1,0 +1,47 @@
+{% include 'base.html' %}
+{% block content %}
+    <div class="login-page-container">
+        <form class="login-page" action="{% url 'users:login_user' %}" method="post">
+            {% csrf_token %}
+            <div class="header-container">
+                <h2 class="signup-heading">Welcome Back!</h2>
+                <h3 class="signup-text">Don't have an account? <span><a href="{% url 'users:signup_user' %}" class="login-link">Sign Up</a></span></h3>
+            </div>
+
+            <div class="login-form-container">
+                <div class="email-container-login">
+                    <label for="email" class="s-label e-label">Email*</label>
+                    <input type="text" class="email-input" name="email" required>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.extra_tags == 'email' %}
+                                <p class="error-message">{{message}}</p>
+                            {% endif %}
+                        {%endfor%}
+                    {% endif %}
+                </div>
+
+
+                <div class="password-container-login">
+                    <div class="pass-input-eye">
+                        <label for="password" class="s-label">Password*</label>
+                        <ion-icon name="eye-outline" class="eye-icon" id="password-icon"></ion-icon>
+                    </div>
+                    <input type="password" class="password-input" name="password" id="password-input" required>
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.extra_tags == 'password' %}
+                                <p class="error-message">{{message}}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="login-button-container">
+                    <button class="subscribe-button" type="submit">Log In</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

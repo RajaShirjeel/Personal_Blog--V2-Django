@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="post-form-container">
+        <form method="post" class="post-form" enctype=multipart/form-data>
+            {% csrf_token %}
+            <div class="post-form-email-wrapper">
+                <label for="{{ form.heading.id_for_label }}" class="create-form-label">{{form.heading.label}}</label>
+                {{form.heading}}
+            </div>
+
+            <div class="post-form-text-wrapper">
+                <label for="{{ form.text.id_for_label }}" class="create-form-label">{{form.text.label}}</label>
+                {{form.text}}
+            </div>
+
+            <div class="post-form-img-wrapper">
+                <label for="{{form.image.id_for_label}}" class="create-form-label">Choose Image *</label>
+                {{form.image}}
+            </div>
+
+            <div class="post-btn-container">
+                <input type="submit" value="Post" class="post-form-submit">
+
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

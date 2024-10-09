@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="img-th-container grid--2">
+        <img src="media/images/random-min.jpg" alt="my imgs" class="personal-img">
+        <div class="home-card">
+            <h3 class="crd-hdr">My Thoughts</h3>
+            <img src="{{first_post.image.url}}" alt="" class="home-crd-img">
+            <h4 class="crd-title">{{first_post.heading}}</h4>
+            <p class="crd-p">{{first_post.text}}</p>
+        </div>
+    </div>
+
+    <div class="posts-container">
+        <div class="post-items">
+            <h2 class="posts-header">Recent Posts</h2>
+            <div class="posts">
+                {% for post in posts %}
+                    <div class="post">
+                        <img src="{{post.image.url}}" alt="post-image" class="post-img">
+                        <div class="post-info">
+                            <div class="post-start">
+                                <p class="post-date">{{post.created_on}}</p>
+                                <a href="#" class="post-link">
+                                    <p class="post-title">{{post.heading}}</p>
+                                    <p class="post-des">{{post.text}}</p>
+                                </a>
+                            </div>
+
+                            <div class="post-end">
+                                <hr class="horizontal">
+                                <p class="post-comment">0 comments</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="about-container">
+        <div class="about-me">
+            <div class="about-img-container">
+                <img src="media/images/about.webp" alt="" class="about-img">
+            </div>
+
+            <div class="about-info">
+                <h2 class="about-header">Hi, I'm Shirjeel</h2>
+                <h3 class="about-title">
+                    A mental health blogger. Passionate about sharing thoughts and information on everything that makes my days better.
+                </h3>
+                <p class="about-p">
+                    I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. 
+                    Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.​
+                </p>
+
+                <div class="button-container">
+                    <button class="subscribe-button" type="submit">More info</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="gallery-container">
+        <h2 class="gallery-header">Always Makes Me Smile</h2>
+        <div class="gallery">
+            <img src="media/images/gallery1.avif" alt="gallery-img" class="gallery-img">
+            <img src="media/images/gallery2.avif" alt="gallery-img" class="gallery-img">
+            <img src="media/images/gallery3.avif" alt="gallery-img" class="gallery-img">
+            <img src="media/images/gallery4.avif" alt="gallery-img" class="gallery-img">
+            <img src="media/images/gallery5.avif" alt="gallery-img" class="gallery-img">
+            <img src="media/images/gallery6.avif" alt="gallery-img" class="gallery-img">
+            <img src="media/images/gallery7.avif" alt="gallery-img" class="gallery-img">
+            <img src="media/images/gallery8.avif" alt="gallery-img" class="gallery-img">
+        </div>
+    </div>
+
+    <div class="invite-container">
+        <div class="invite">
+            <h2 class="invite-header">Join the Conversations</h2>
+            <div class="invite-buttons">
+                <a href="{% url 'users:login_user' %}" class="invite-button">Login</a>
+                <a href="{% url 'users:signup_user' %}" class="invite-button">Sign Up</a>
+            </div>
+        </div>
+    </div>
+{% include 'footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="signup-page-container">
+        <form method="post" class="form-container" action="{% url 'users:signup_user' %}">
+             {% csrf_token %} 
+            <div class="signup-heading-container">
+                <h2 class="signup-heading">Join the Conversations</h2>
+                <h3 class="signup-text">Already have an account? <span><a href="{% url 'users:login_user' %}" class="login-link">Log in</a></span></h3>
+            </div>
+            <div class="signup-form-container">
+                <div class="signup-names">
+                    <div class="signup-l-i">
+                        <label for="first-name" class="s-label">First Name*</label>
+                        <input type="text" class="s-input" name="first-name" required>
+                    </div>
+    
+                    <div class="signup-l-i">
+                        <label for="last-name" class="s-label">Last Name*</label>
+                        <input type="text" class="s-input" name="last-name" required>
+                    </div>
+                </div>
+
+
+                <div class="email-container">
+                    <label for="email" class="s-label">Username*</label>
+                    <input type="text" class="email-input" name="username" required>
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.extra_tags == 'username' %}
+                                <p class="error-message">{{message}}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="email-container">
+                    <label for="email" class="s-label e-label">Email*</label>
+                    <input type="text" class="email-input" name="email" required>
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.extra_tags == 'email' %}
+                                <p class="error-message">{{message}}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="password-container">
+                    <div class="pass-input-eye">
+                        <label for="password" class="s-label">Password*</label>
+                        <ion-icon name="eye-outline" class="eye-icon" id="password-icon"></ion-icon>
+                    </div>
+                    <input type="password" class="password-input" name="password" id="password-input" required>
+                </div>
+
+                <div class="subscribe-button-container">
+                    <button class="subscribe-button" type="submit">Subscribe</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

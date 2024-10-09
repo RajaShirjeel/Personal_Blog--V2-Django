@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/queries.css' %}">
+    <title>Social Media App</title>
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <h1 class="logo-text">
+                Inner Pieces
+            </h1>
+            <h2 class="logo-def">Thoughts on Lifestyle & Mental Health</h2>
+        </div>
+        <div class="nav-right">
+            <a href="/" class="nav-links"><p class="nav-p">Home</p></a>
+            <a href="#" class="nav-links"><p class="nav-p">Blog</p></a>
+            <a href="#" class="nav-links"><p class="nav-p">About</p></a>
+            <a href="#" class="nav-links"><p class="nav-p">Resources</p></a>
+            <a href="#" class="nav-links"><p class="nav-p">Contact</p></a>
+        </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+<script src="{% static 'js/script.js' %}"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html>
