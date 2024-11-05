@@ -20,7 +20,7 @@
                         <div class="post-info">
                             <div class="post-start">
                                 <p class="post-date">{{post.created_on}}</p>
-                                <a href="#" class="post-link">
+                                <a href="{% url 'posts:view_post' slug=post.slug %}" class="post-link">
                                     <p class="post-title">{{post.heading}}</p>
                                     <p class="post-des">{{post.text}}</p>
                                 </a>
@@ -62,7 +62,7 @@
 
 
     <div class="gallery-container">
-        <h2 class="gallery-header">Always Makes Me Smile</h2>
+        <h2 class="gallery-header">Always Makes Me smile</h2>
         <div class="gallery">
             <img src="media/images/gallery1.avif" alt="gallery-img" class="gallery-img">
             <img src="media/images/gallery2.avif" alt="gallery-img" class="gallery-img">
@@ -70,8 +70,8 @@
             <img src="media/images/gallery4.avif" alt="gallery-img" class="gallery-img">
             <img src="media/images/gallery5.avif" alt="gallery-img" class="gallery-img">
             <img src="media/images/gallery6.avif" alt="gallery-img" class="gallery-img">
-            <img src="media/images/gallery7.avif" alt="gallery-img" class="gallery-img">
-            <img src="media/images/gallery8.avif" alt="gallery-img" class="gallery-img">
+            <img src="media/images/gallery7.avif" alt="gallery-img" class="gallery-img hidden-img">
+            <img src="media/images/gallery8.avif" alt="gallery-img" class="gallery-img hidden-img">
         </div>
     </div>
 

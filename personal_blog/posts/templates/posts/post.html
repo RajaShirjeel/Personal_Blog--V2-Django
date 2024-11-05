@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="post-view--comments-container">
+    <div class="post-view-post-center">
+        <div class="post-view-container">
+            <div class="post-view-box">
+                <h3 class="post-view-subheading">All Posts</h3>
+                <a href="#" class="post-view-log-btn">Log in / Sign up</a>
+            </div>
+    
+            <div class="post-view-post-container">
+                <div class="post-view-post-heading">
+                    <ion-icon name="person-circle-outline" class="post-view-icon"></ion-icon>
+                    <p class="post-view-post-admin">{{post.creator.username}}</p>
+                    <p class="post-view-post-date">{{date}}</p>
+                </div>
+    
+                <div class="post-view-post-info">
+                    <h2 class="post-view-post-heading">{{post.heading}}</h2>
+                    <img src="{{post.image.url}}" alt="post-image" class="post-view-post-img">
+                    <p class="post-view-post-text">{{post.text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="comments-container">
+        <h3 class="comments-header">
+            Comments
+        </h3>
+        <hr class="comment-hr">
+        <form action="{% url 'comments:create_comment' slug=post.slug %}" class="comment-form" method="post">
+            {% csrf_token %}
+            <input type="text" class="comment-input" placeholder="Write a comment..." name="comment">
+            <button type="submit" class="comment-btn">Publish</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

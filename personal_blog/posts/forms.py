@@ -16,6 +16,5 @@ class CreatePost(ModelForm):
             "heading": 'Title',
             'text': 'Opinion'
         }
-    # image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'create-form-img-label'}))
 
 

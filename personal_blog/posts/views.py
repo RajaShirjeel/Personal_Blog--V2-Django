@@ -25,3 +25,9 @@ def create_form(request):
         form = CreatePost()
 
     return render(request, 'posts/new_post.html', {'form': form})
+
+
+def view_post(request, slug):
+    post = Post.objects.filter(slug=slug).first()
+    date = post.created_on.strftime('%b %-d, %Y')
+    return render(request, 'posts/post.html', {'post':post, 'date':date})
