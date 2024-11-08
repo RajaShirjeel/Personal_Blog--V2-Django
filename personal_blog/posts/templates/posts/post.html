@@ -9,11 +9,21 @@
             </div>
     
             <div class="post-view-post-container">
-                <div class="post-view-post-heading">
-                    <ion-icon name="person-circle-outline" class="post-view-icon"></ion-icon>
-                    <p class="post-view-post-admin">{{post.creator.username}}</p>
-                    <p class="post-view-post-date">{{date}}</p>
+                <div class="post-view-post-options">
+                    <div class="post-view-post-heading">
+                        <ion-icon name="person-circle-outline" class="post-view-icon"></ion-icon>
+                        <p class="post-view-post-admin">{{post.creator.username}}</p>
+                        <p class="post-view-post-date">{{date}}</p>
+                    </div>
+
+                    <div class="post-view-op">
+                        <ion-icon name="ellipsis-vertical-outline" class="options-icon"></ion-icon>
+                        <div class="dropdown-menu">
+                            <a href="{% url 'posts:delete_post' slug=post.slug %}" class="delete-post">Delete post</a>
+                        </div>
+                    </div>
                 </div>
+
     
                 <div class="post-view-post-info">
                     <h2 class="post-view-post-heading">{{post.heading}}</h2>
@@ -34,6 +44,23 @@
             <input type="text" class="comment-input" placeholder="Write a comment..." name="comment">
             <button type="submit" class="comment-btn">Publish</button>
         </form>
+
+        <div class="user-comments">
+            {% for comment in comments %}
+                <div class="comment-info">
+                    <div class="comment-icon-name">
+                        <ion-icon name="person-circle-outline" class="comment-icon"></ion-icon>
+                        <p class="comment-user">{{comment.user.username}}</p>
+                        <p class="comment-text">{{comment.text}}</p>
+                        {% if current_user == post.user %} 
+                            <a href="{% url 'comments:delete_comment' pk=comment.pk slug=post.slug %}"><ion-icon name="close-outline" class="comment-del-icon"></ion-icon></a>
+                        {% endif %}
+                    </div>
+                    <p class="comment-date">{{comment.date}}</p>
+                </div>
+
+            {% endfor %}
+        </div>
     </div>
 </div>
 

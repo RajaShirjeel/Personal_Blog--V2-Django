@@ -16,3 +16,9 @@ def create_comment(request, slug):
         )
 
     return redirect('posts:view_post', slug=slug)
+
+
+def delete_comment(request, pk, slug):
+    comment = Comment.objects.get(pk=pk)
+    comment.delete()
+    return redirect('posts:view_post', slug=slug)

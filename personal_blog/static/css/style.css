@@ -288,7 +288,7 @@ header{
 }
 
 .home-crd-img{
-    width: 50%;
+    width: 80%;
     height: auto;
     min-height: 50vh;
 }
@@ -298,12 +298,10 @@ header{
     font-size: 2rem;
     margin-bottom: 1rem;
     font-weight: 400;
-    color: #666666
-
 }
 .crd-p{
     font-size: 1.5rem;
-    width: 40%;
+    width: 80%;
     font-weight: 400;
     color: #666666;
     text-align: center;
@@ -714,6 +712,38 @@ header{
     margin-top: 3rem;
     padding: 5rem;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+}
+
+.post-view-post-options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options-icon{
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.post-view-op:hover .dropdown-menu{
+    display: block;
+}
+
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    right: 2.5rem;
+    border: 1px solid #777;
+    padding: 1rem 0.5rem;
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.dropdown-menu a{
+    text-decoration: none;
+    color: red;
 }
 
 .post-view-post-heading{
@@ -796,4 +826,52 @@ header{
     color: white;
     cursor: pointer;
     font-size: 1.4rem;
+    display: none;
+    margin-bottom: 3rem;
+}
+
+.user-comments{
+    margin-top: 4rem;
+}
+
+.comment-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.comment-icon-name{
+    display: flex;
+    align-items: center;
+}
+
+.comment-icon{
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-right: 0.5rem;
+}
+
+.comment-user{
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin-right: 2rem;
+}
+
+.comment-text{
+    font-size: 1.2rem;
+    font-weight: lighter;
+    color: #333333;
+}
+
+.comment-date{
+    color: #a0a0a0;
+}
+
+.comment-del-icon{
+    margin-left: 2rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    cursor: pointer;
+    color: red;
 }
