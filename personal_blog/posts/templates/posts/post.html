@@ -5,7 +5,11 @@
         <div class="post-view-container">
             <div class="post-view-box">
                 <h3 class="post-view-subheading">All Posts</h3>
-                <a href="#" class="post-view-log-btn">Log in / Sign up</a>
+                {% if user.is_authenticated %}
+
+                {%else %}
+                    <a href="#" class="post-view-log-btn">Log in / Sign up</a>
+                {% endif %}
             </div>
     
             <div class="post-view-post-container">
@@ -16,12 +20,16 @@
                         <p class="post-view-post-date">{{date}}</p>
                     </div>
 
-                    <div class="post-view-op">
-                        <ion-icon name="ellipsis-vertical-outline" class="options-icon"></ion-icon>
-                        <div class="dropdown-menu">
-                            <a href="{% url 'posts:delete_post' slug=post.slug %}" class="delete-post">Delete post</a>
+                    {% if post.user == current_user %}
+                        <div class="post-view-op">
+                            <ion-icon name="ellipsis-vertical-outline" class="options-icon"></ion-icon>
+                            {% if user == post.user %}
+                                <div class="dropdown-menu">
+                                    <a href="{% url 'posts:delete_post' slug=post.slug %}" class="delete-post">Delete post</a>
+                                </div>
+                            {% endif %}
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
 
     
@@ -39,11 +47,13 @@
             Comments
         </h3>
         <hr class="comment-hr">
-        <form action="{% url 'comments:create_comment' slug=post.slug %}" class="comment-form" method="post">
-            {% csrf_token %}
-            <input type="text" class="comment-input" placeholder="Write a comment..." name="comment">
-            <button type="submit" class="comment-btn">Publish</button>
-        </form>
+        {% if user.is_authenticated %}
+            <form action="{% url 'comments:create_comment' slug=post.slug %}" class="comment-form" method="post">
+                {% csrf_token %}
+                <input type="text" class="comment-input" placeholder="Write a comment..." name="comment">
+                <button type="submit" class="comment-btn">Publish</button>
+            </form>
+        {% endif %}
 
         <div class="user-comments">
             {% for comment in comments %}
@@ -52,7 +62,7 @@
                         <ion-icon name="person-circle-outline" class="comment-icon"></ion-icon>
                         <p class="comment-user">{{comment.user.username}}</p>
                         <p class="comment-text">{{comment.text}}</p>
-                        {% if current_user == post.user %} 
+                        {% if user == post.user %} 
                             <a href="{% url 'comments:delete_comment' pk=comment.pk slug=post.slug %}"><ion-icon name="close-outline" class="comment-del-icon"></ion-icon></a>
                         {% endif %}
                     </div>

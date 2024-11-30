@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, logout
 from django.contrib import messages
 
 from .models import CustomUser
@@ -59,3 +59,9 @@ def login(request):
             return redirect('users:login_user')
         
     return render(request, 'users/login.html')
+
+
+# Log out
+def logout_user(request):
+    logout(request)
+    return redirect('posts:home')

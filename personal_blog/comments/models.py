@@ -6,7 +6,7 @@ from posts.models import Post
 # Create your models here.
 class Comment(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     text = models.CharField(max_length=600, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
 

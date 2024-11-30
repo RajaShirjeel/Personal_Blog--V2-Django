@@ -28,7 +28,11 @@
             <a href="#" class="nav-links"><p class="nav-p">Blog</p></a>
             <a href="#" class="nav-links"><p class="nav-p">About</p></a>
             <a href="{% url 'posts:create_form' %}" class="nav-links"><p class="nav-p">Post</p></a>
-            <a href="#" class="nav-links"><p class="nav-p">Contact</p></a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'users:logout_user' %}" class="nav-links"><p class="nav-p">Logout</p></a>
+            {% else %}
+                <a href="{% url 'users:login_user' %}" class="nav-links"><p class="nav-p">Login</p></a>
+            {% endif %}
         </div>
     </header>
     {% block content %}

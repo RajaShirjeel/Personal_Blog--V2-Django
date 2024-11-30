@@ -28,7 +28,7 @@
 
                             <div class="post-end">
                                 <hr class="horizontal">
-                                <p class="post-comment">0 comments</p>
+                                <p class="post-comment">{{post.comments.all|length}} comments</p>
                             </div>
                         </div>
                     </div>
@@ -75,15 +75,6 @@
         </div>
     </div>
 
-    <div class="invite-container">
-        <div class="invite">
-            <h2 class="invite-header">Join the Conversations</h2>
-            <div class="invite-buttons">
-                <a href="{% url 'users:login_user' %}" class="invite-button">Login</a>
-                <a href="{% url 'users:signup_user' %}" class="invite-button">Sign Up</a>
-            </div>
-        </div>
-    </div>
 {% include 'footer.html' %}
 
 {% endblock %}
